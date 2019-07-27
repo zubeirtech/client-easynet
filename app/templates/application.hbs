@@ -1,5 +1,51 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
+<div class="ui tablet computer only padded grid">
+	<div class="ui top fixed borderless fluid huge menu">
+		<div class="ui container">
+			<a href="/"class="header item">Easynet</a>
+			<a class="item">
+				<i class="list alternate outline icon"></i> Home
+			</a>
+			<a class="item">
+				<i class="user circle outline icon"></i> My Account
+			</a>
+			<div class="right menu">
+				<a class="item">
+					<button class="ui inverted button">Log In</button>
+				</a> 
+				<a class="item">
+					<button class="ui blue inverted button">Sign Up</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="ui mobile only padded grid">
+	<div class="ui top fixed borderless huge fluid menu">
+		<a href="/" class="header item">Easynet</a>
+		<div class="right menu">
+			<div class="item">
+				<button class="ui icon toggle basic button">
+					<i class="bars icon"></i>
+				</button>
+			</div>
+		</div>
+		<div class="ui vertical borderless fluid menu">
+			<a class="item">
+				<i class="list alternate outline icon"></i> Home
+			</a>
+			<a class="item">
+				<i class="user circle outline icon"></i> My Account
+			</a>
+			<a class="item">
+				<button class="ui inverted button">Log In</button>
+			</a>
+			<a class="item">
+				<button class="ui blue inverted button">Sign Up</button>
+			</a>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<br>
 {{outlet}}
