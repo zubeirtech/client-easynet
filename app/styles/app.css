@@ -3,7 +3,7 @@ body {
   padding-top: 54px;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: grayscale;
-  background-color: #edf0f5;
+  background-color: #edf0f5 !important;
 }
 .ui.borderless.menu {
   background-color: #283e4a;

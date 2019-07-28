@@ -18,9 +18,15 @@
             <button class="ui inverted button">Log In</button>
           {{/link-to}}
 				{{/if}} 
-				<a class="item">
-					<button class="ui blue inverted button">Sign Up</button>
-				</a>
+        {{#link-to "sign-up" class="item"}}
+          <button class="ui blue inverted button">Sign Up</button>
+        {{/link-to}}
+        <a href="https://zubeirtech.herokuapp.com" class="item" target="_blank">
+          <i class="linkify icon"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/zubeir-mohamed-29668217b/" class="item">
+          <i class="linkedin icon"></i>
+        </a>
 			</div>
 		</div>
 	</div>
@@ -42,12 +48,24 @@
 			<a class="item">
 				<i class="user circle outline icon"></i> My Account
 			</a>
-			<a class="item">
-				<button class="ui inverted button">Log In</button>
-			</a>
-			<a class="item">
-				<button class="ui blue inverted button">Sign Up</button>
-			</a>
+      {{#if session.isAuthenticated}}
+        <a class="item">
+          <button class="ui inverted button">Log out</button>
+        </a>
+      {{else}}
+        {{#link-to "login" class="item"}}
+          <button class="ui inverted button">Log In</button>
+        {{/link-to}}
+      {{/if}}
+      {{#link-to "sign-up" class="item"}}
+        <button class="ui blue inverted button">Sign Up</button>
+      {{/link-to}}
+      <a href="https://zubeirtech.herokuapp.com" class="item" target="_blank">
+        <i class="linkify icon"></i> Zubeirtech
+      </a>
+      <a href="https://www.linkedin.com/in/zubeir-mohamed-29668217b/" class="item">
+        <i class="linkedin icon"></i> LinkedIn
+      </a>
 		</div>
 	</div>
 </div>
@@ -55,8 +73,3 @@
 <br>
 <br>
 {{outlet}}
-<footer>
-  <div class="ui container">
-    <p>© 2019 <a href="https://zubeirtech.herokuapp.com" style="color: inherit" class="name" target="_blank">Zubeir Mohamed</a> &nbsp;&nbsp;&nbsp; <a href="https://github.com/zubeir68" style="color: inherit" target="_blank"><i class="github icon"></i></a> <a href="https://www.linkedin.com/in/zubeir-mohamed-29668217b/" style="color: inherit" target="_blank"><i class="linkedin icon"></i></a></p>
-  </div>
-</footer>
