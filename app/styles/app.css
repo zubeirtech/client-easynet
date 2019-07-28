@@ -7,6 +7,7 @@ body {
 }
 .ui.borderless.menu {
   background-color: #283e4a;
+  color: white !important;
   box-shadow: none;
   flex-wrap: wrap;
   border: none;
@@ -18,23 +19,32 @@ body {
   font-size: 18px;
   font-weight: 400;
 }
-.ui.mobile.only.grid .ui.menu .ui.vertical.menu {
+
+.bars {
   color: white !important;
+}
+
+.bars:active {
+  color: black !important;
+}
+
+.ui.mobile.only.grid .ui.menu .ui.vertical.menu {
   background-color: #283e4a !important;
   display: none;
 }
 .ui.mobile.only.grid .ui.vertical.menu .dropdown.icon {
   background-color: #283e4a !important;
   float: unset;
+  color: white !important;
 }
 .ui.mobile.only.grid .ui.vertical.menu .dropdown.icon:before {
   background-color: #283e4a !important;
+
 }
 .item {
   color: white !important;
 }
 .ui.mobile.only.grid .ui.vertical.menu .ui.dropdown.item .menu {
-  
   position: static;
   width: 100%;
   background-color: #283e4a !important;
@@ -45,18 +55,19 @@ body {
   color: white !important;
   margin-top: 6px;
 }
-.ui.container > .ui.message {
-  background-color: rga(238, 238, 238);
-  box-shadow: none;
-  padding: 5rem 4rem;
-  margin-top: 1rem;
+
+footer {
+  bottom: 0;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  background-color: #283e4a;
 }
-.ui.message h1.ui.header {
-  font-size: 4.5rem;
+footer p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
 }
-.ui.message p.lead {
-  font-size: 1.3rem;
-  color: #333333;
-  line-height: 1.4;
-  font-weight: 300;
+.name:hover {
+  text-decoration: underline;
 }

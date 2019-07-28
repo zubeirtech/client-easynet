@@ -9,9 +9,15 @@
 				<i class="user circle outline icon"></i> My Account
 			</a>
 			<div class="right menu">
-				<a class="item">
-					<button class="ui inverted button">Log In</button>
-				</a> 
+				{{#if session.isAuthenticated}}
+				  <a class="item">
+					  <button class="ui inverted button">Log out</button>
+				  </a>
+				{{else}}
+          {{#link-to "login" class="item"}}
+            <button class="ui inverted button">Log In</button>
+          {{/link-to}}
+				{{/if}} 
 				<a class="item">
 					<button class="ui blue inverted button">Sign Up</button>
 				</a>
@@ -24,7 +30,7 @@
 		<a href="/" class="header item">Easynet</a>
 		<div class="right menu">
 			<div class="item">
-				<button class="ui icon toggle basic button">
+				<button class="ui icon toggle basic button"  id="mobile-button">
 					<i class="bars icon"></i>
 				</button>
 			</div>
@@ -49,3 +55,8 @@
 <br>
 <br>
 {{outlet}}
+<footer>
+  <div class="ui container">
+    <p>© 2019 <a href="https://zubeirtech.herokuapp.com" style="color: inherit" class="name" target="_blank">Zubeir Mohamed</a> &nbsp;&nbsp;&nbsp; <a href="https://github.com/zubeir68" style="color: inherit" target="_blank"><i class="github icon"></i></a> <a href="https://www.linkedin.com/in/zubeir-mohamed-29668217b/" style="color: inherit" target="_blank"><i class="linkedin icon"></i></a></p>
+  </div>
+</footer>
