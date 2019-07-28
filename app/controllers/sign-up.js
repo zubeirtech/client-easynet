@@ -14,12 +14,16 @@ export default Controller.extend({
 
     actions: {
 
-        register() {
+        async register() {
             if (this.checklist(this.model)) {
                 if (this.model.password === this.secondPassword) {
-                    
-                    const res = this.model.save();
-                    console.log(res)
+                    try {
+                        await this.model.save();   
+                    } catch (error) {
+                        if (error) {
+                            this.toastr.error('Account exists already', 'Error')
+                        }
+                    }
                 } else {
                     this.toastr.warning("Passwords don't match", 'Warning')
                 }
