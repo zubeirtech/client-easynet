@@ -74,7 +74,7 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                {{input value=this.model.user_name placeholder="Enter Email Address" type="text"}}
+                {{input value=this.model.user_name placeholder="Enter username - does not have to be your email" type="text"}}
               </div>
             </div>
             <div class="two fields">
@@ -97,7 +97,7 @@
                 {{input value=this.secondPassword placeholder="Enter Password Again" type="password"}}
               </div>
             </div>
-            <div class="ui fluid large blue submit button">Register</div>
+            <div class="ui fluid large blue submit button" {{action "register"}}>Register your account</div>
           </div>
           <div class="ui error message"></div>
         </form>
