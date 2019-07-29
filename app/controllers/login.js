@@ -17,6 +17,9 @@ export default Controller.extend({
                     this.toastr.error('Password or username is wrong', 'Error')
                 }
             }
+        },
+        authenticateGoogle() {
+            this.get('session').authenticate('authenticator:torii', 'google-oauth2')
         }
     }
 });

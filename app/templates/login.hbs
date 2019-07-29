@@ -28,7 +28,14 @@
 										{{input value=this.password placeholder="Enter password" type="password"}}
 									</div>
 								</div>
-								<div class="ui fluid large blue submit button" {{action "authenticate"}}>Login</div>
+								<div class="ui fluid large blue submit button" {{action "authenticate"}}>Login</div><br>
+								<button class="ui red inverted button" {{action "authenticateGoogle"}}>
+									<i class="google icon"></i> Sign In with Google
+								</button>
+								<button class="ui facebook button">
+									<i class="facebook icon"></i>
+									Sign In with Facebook
+								</button>
 							</div>
 							<div class="ui error message"></div>
 						</form>
@@ -70,7 +77,14 @@
 								{{input value=this.password placeholder="Enter password" type="password"}}
 							</div>
 						</div>
-						<div class="ui fluid large blue submit button" {{action "authenticate"}}>Login</div>
+						<div class="ui fluid large blue submit button" {{action "authenticate"}}>Login</div><br>
+						<button class="ui red inverted button" {{action "authenticateGoogle"}}>
+							<i class="google icon"></i> Sign In with Google
+						</button>
+						<button class="ui facebook button">
+							<i class="facebook icon"></i>
+							Sign In with Facebook
+						</button>
 					</div>
 					<div class="ui error message"></div>
 				</form>
