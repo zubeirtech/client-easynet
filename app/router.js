@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
   this.route('feed');
   this.route('sign-up');
+  this.route('privacy-policy');
 });
 
 export default Router;

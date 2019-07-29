@@ -28,6 +28,10 @@ module.exports = function(environment) {
     resourceName: 'social',
   };
 
+  ENV['torii'] = {
+    
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
