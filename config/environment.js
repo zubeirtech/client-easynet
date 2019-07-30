@@ -28,6 +28,10 @@ module.exports = function(environment) {
           apiKey: "988101118104-q1jd4s2frs0vbshbh92qjpm6vgbfrl6r.apps.googleusercontent.com",
           redirectUri: 'http://localhost:4200/torii/redirect.html',
           scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
+        },
+        'facebook-oauth2': {
+          apiKey: '1329692483863203',
+          allowUnsafeRedirect: true
         }
       }
     }

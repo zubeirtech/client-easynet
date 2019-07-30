@@ -12,24 +12,52 @@ export default ToriiAuthenticator.extend({
     }),
 
     async restore(data) {
-    },
-
-    async authenticate(provider, options) {
         try {
-            const authResponse = await this.torii.open(provider, options);
-            const res = await this.get('ajax').request('/auth-google', {
-                method: 'POST',
-                data: {
-                    code: authResponse.authorizationCode,
-                    redirect_uri: authResponse.redirectUri
-                },
-            });
-            const { access_token } = res;
-            set(this.session.data.authenticated, 'access_token', access_token);
-            return access_token;
+            //pass
         } catch (error) {
             document.location.reload();
             console.log(error);
+        }
+    },
+
+    async authenticate(provider, options) {
+        if (provider === 'google-oauth2') {
+            try {
+                const authResponse = await this.torii.open(provider, options);
+                const res = await this.get('ajax').request('/auth-google', {
+                    method: 'POST',
+                    data: {
+                        code: authResponse.authorizationCode,
+                        redirect_uri: authResponse.redirectUri
+                    },
+                });
+                const { access_token } = res;
+                set(this.session.data.authenticated, 'access_token', access_token);
+                return access_token;
+            } catch (error) {
+                this.get('session').invalidate();
+                document.location.reload();
+                console.log(error);
+            }
+        } else {
+            try {
+                const authResponse = await this.torii.open(provider, options);
+                console.log('FACEBOOK:  ', authResponse);
+                const res = await this.get('ajax').request('/auth-facebook', {
+                    method: 'POST',
+                    data: {
+                        code: authResponse.authorizationCode,
+                        redirectUri: authResponse.redirectUri
+                    },
+                })
+                const { access_token } = res;
+                set(this.session.data, 'access_token', access_token);
+                return access_token
+            } catch (error) {
+                this.get('session').invalidate();
+                document.location.reload();
+                console.log(error);
+            }
         }
     },
 

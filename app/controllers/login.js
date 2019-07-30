@@ -20,6 +20,9 @@ export default Controller.extend({
         },
         authenticateGoogle() {
             this.get('session').authenticate('authenticator:torii', 'google-oauth2')
+        },
+        authenticateFacebook() {
+            this.get('session').authenticate('authenticator:torii', 'facebook-oauth2')
         }
     }
 });

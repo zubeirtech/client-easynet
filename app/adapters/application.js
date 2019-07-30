@@ -7,7 +7,7 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     session: service('session'),
 
     authorize(xhr) {
-        if (this.session.access_token) {
+        if (this.session.data.access_token) {
             let { access_token } = this.session;
             xhr.setRequestHeader('Authorization', `Bearer ${access_token}`);
         } else {
