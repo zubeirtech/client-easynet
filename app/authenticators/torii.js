@@ -1,7 +1,8 @@
-import Base from 'ember-simple-auth/authenticators/base';
+import ToriiAuthenticator from 'ember-simple-auth/authenticators/torii';
 import { inject as service } from '@ember/service';
+import { set } from '@ember/object';
 
-export default Base.extend({
+export default ToriiAuthenticator.extend({
     torii: service(),
     session: service(),
     ajax: service(),
@@ -16,7 +17,7 @@ export default Base.extend({
                     redirect_uri: authResponse.redirectUri
                 },
             });
-            console.log(res);
+            
         } catch (error) {
             console.log(error);
         }
