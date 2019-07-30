@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 export default Base.extend({
     torii: service(),
     session: service(),
+    ajax: service(),
 
     async authenticate(provider, options) {
         try {
