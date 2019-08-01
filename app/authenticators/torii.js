@@ -32,13 +32,14 @@ export default ToriiAuthenticator.extend({
                     },
                 });
                 const { access_token } = res;
+                document.location.reload();
                 set(this.session.data, 'access_token', access_token);
                 return access_token;
             } catch (error) {
                 this.get('session').invalidate();
                 console.log(error);
             }
-        } else {
+        } else if (provider === 'facebook-oauth2') {
             try {
                 const authResponse = await this.torii.open(provider, options);
                 const res = await this.get('ajax').request('/auth-facebook', {
@@ -49,6 +50,7 @@ export default ToriiAuthenticator.extend({
                     },
                 })
                 const { access_token } = res;
+                document.location.reload();
                 set(this.session.data, 'access_token', access_token);
                 return access_token
             } catch (error) {
@@ -59,7 +61,7 @@ export default ToriiAuthenticator.extend({
     },
 
     async invalidate() {
-
+        delete this.session.data.access_token;
     }
 
 });
