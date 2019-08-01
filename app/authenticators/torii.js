@@ -11,11 +11,11 @@ export default ToriiAuthenticator.extend({
         return this.session.access_token;
     }),
 
-    async restore(data) {
+    async restore() {
         try {
             //pass
         } catch (error) {
-            document.location.reload();
+            // document.location.reload();
             console.log(error);
         }
     },
@@ -32,17 +32,15 @@ export default ToriiAuthenticator.extend({
                     },
                 });
                 const { access_token } = res;
-                set(this.session.data.authenticated, 'access_token', access_token);
+                set(this.session.data, 'access_token', access_token);
                 return access_token;
             } catch (error) {
                 this.get('session').invalidate();
-                document.location.reload();
                 console.log(error);
             }
         } else {
             try {
                 const authResponse = await this.torii.open(provider, options);
-                console.log('FACEBOOK:  ', authResponse);
                 const res = await this.get('ajax').request('/auth-facebook', {
                     method: 'POST',
                     data: {
@@ -55,13 +53,12 @@ export default ToriiAuthenticator.extend({
                 return access_token
             } catch (error) {
                 this.get('session').invalidate();
-                document.location.reload();
                 console.log(error);
             }
         }
     },
 
-    async invalidate(data) {
+    async invalidate() {
 
     }
 
