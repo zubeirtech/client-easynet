@@ -4,9 +4,9 @@
 			<a href="/" class="header item">
 				<img src="https://imgur.com/HrD1F2p.png" alt="logo">
 			</a>
-			<a class="item">
-				<i class="list alternate outline icon"></i> Home
-			</a>
+			{{#link-to "feed" class="item"}}
+			  <i class="list alternate outline icon"></i> Home
+			{{/link-to}}
 			{{#link-to "my-account" class="item"}}
 			<i class="user circle outline icon"></i> My Account
 			{{/link-to}}
@@ -43,9 +43,9 @@
 			</div>
 		</div>
 		<div class="ui vertical borderless fluid menu">
-			<a class="item">
+			{{#link-to "feed" class="item"}}
 				<i class="list alternate outline icon"></i> Home
-			</a>
+			{{/link-to}}
 			{{#link-to "my-account" class="item"}}
 			<i class="user circle outline icon"></i> My Account
 			{{/link-to}}
