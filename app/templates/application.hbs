@@ -1,36 +1,30 @@
 <div class="ui tablet computer only padded grid">
 	<div class="ui top fixed borderless fluid huge menu">
 		<div class="ui container">
-			<a href="/"class="header item">
-			  <img src="https://imgur.com/HrD1F2p.png" alt="logo">
+			<a href="/" class="header item">
+				<img src="https://imgur.com/HrD1F2p.png" alt="logo">
 			</a>
 			<a class="item">
 				<i class="list alternate outline icon"></i> Home
 			</a>
-			<a class="item">
-				<i class="user circle outline icon"></i> My Account
-			</a>
+			{{#link-to "my-account" class="item"}}
+			<i class="user circle outline icon"></i> My Account
+			{{/link-to}}
 			<div class="right menu">
 				{{#if session.isAuthenticated}}
-				  <a class="item">
-					  <button class="ui inverted button" {{action "invalidateSession"}}>Log out</button>
-				  </a>
+				<a class="item">
+					<button class="ui inverted button" {{action "invalidateSession"}}>Log out</button>
+				</a>
 				{{else}}
-          {{#link-to "login" class="item"}}
-            <button class="ui inverted button">Log In</button>
-          {{/link-to}}
-          {{#link-to "sign-up" class="item"}}
-            <button class="ui blue inverted button">Sign Up</button>
-          {{/link-to}}
-				{{/if}} 
-        <a href="https://zubeirtech.herokuapp.com" class="item" target="_blank">
-          <i class="linkify icon"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/zubeir-mohamed-29668217b/" class="item">
-          <i class="linkedin icon"></i>
-        </a>
-				{{#link-to "privacy-policy" class="item"}}
-					Privacy Policy
+				{{#link-to "login" class="item"}}
+				<button class="ui inverted button">Log In</button>
+				{{/link-to}}
+				{{#link-to "sign-up" class="item"}}
+				<button class="ui blue inverted button">Sign Up</button>
+				{{/link-to}}
+				{{/if}}
+				{{#link-to "about" class="item"}}
+				About
 				{{/link-to}}
 			</div>
 		</div>
@@ -39,11 +33,11 @@
 <div class="ui mobile only padded grid">
 	<div class="ui top fixed borderless huge fluid menu">
 		<a href="/" class="header item">
-		  <img src="https://imgur.com/HrD1F2p.png" alt="logo">
+			<img src="https://imgur.com/HrD1F2p.png" alt="logo">
 		</a>
 		<div class="right menu">
 			<div class="item">
-				<button class="ui icon toggle basic button"  id="mobile-button">
+				<button class="ui icon toggle basic button" id="mobile-button">
 					<i class="bars icon"></i>
 				</button>
 			</div>
@@ -52,29 +46,23 @@
 			<a class="item">
 				<i class="list alternate outline icon"></i> Home
 			</a>
+			{{#link-to "my-account" class="item"}}
+			<i class="user circle outline icon"></i> My Account
+			{{/link-to}}
+			{{#if session.isAuthenticated}}
 			<a class="item">
-				<i class="user circle outline icon"></i> My Account
+				<button class="ui inverted button">Log out</button>
 			</a>
-      {{#if session.isAuthenticated}}
-        <a class="item">
-          <button class="ui inverted button">Log out</button>
-        </a>
-      {{else}}
-        {{#link-to "login" class="item"}}
-          <button class="ui inverted button">Log In</button>
-        {{/link-to}}
-				{{#link-to "sign-up" class="item"}}
-				  <button class="ui blue inverted button">Sign Up</button>
-				{{/link-to}}
-      {{/if}}
-      <a href="https://zubeirtech.herokuapp.com" class="item" target="_blank">
-        <i class="linkify icon"></i> Zubeirtech
-      </a>
-      <a href="https://www.linkedin.com/in/zubeir-mohamed-29668217b/" class="item">
-        <i class="linkedin icon"></i> LinkedIn
-      </a>
+			{{else}}
+			{{#link-to "login" class="item"}}
+			<button class="ui inverted button">Log In</button>
+			{{/link-to}}
+			{{#link-to "sign-up" class="item"}}
+			<button class="ui blue inverted button">Sign Up</button>
+			{{/link-to}}
+			{{/if}}
 			{{#link-to "privacy-policy" class="item"}}
-			  Privacy Policy
+			About
 			{{/link-to}}
 		</div>
 	</div>

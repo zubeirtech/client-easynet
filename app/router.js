@@ -11,6 +11,8 @@ Router.map(function() {
   this.route('feed');
   this.route('sign-up');
   this.route('privacy-policy');
+  this.route('my-account');
+  this.route('about');
 });
 
 export default Router;
