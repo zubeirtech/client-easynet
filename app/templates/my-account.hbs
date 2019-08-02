@@ -7,7 +7,7 @@
           <div class="ui raised segment">
             <div class="two fields">
               <div class="field">
-                {{#if this.model.user.image}}
+                {{#if (not-eq this.model.user.image "null")}}
                 <img src={{this.model.user.image}} alt="" class="ui small circular image">
                 {{else}}
                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
@@ -39,12 +39,7 @@
               </div>
             </div><br>
             <div class="field">
-              <label for="">Add image url (File upload will be implemented in future version)</label>
-              <div class="ui input">
-                {{input value=this.imageUrl placeholder="Enter url to change profile picture..." type="text"}}
-              </div>
-              <br> <br>
-              <button class="ui blue button" {{action "changeImage"}}>Edit profile picture</button>
+              <label for="">Changing profile picture will be available in future version</label>
             </div> <br>
             <div class="two fields">
               <div class="field">
