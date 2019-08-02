@@ -7,5 +7,6 @@ export default DS.Model.extend({
     biography: DS.attr('string'),
     age: DS.attr('number', { defaultValue: 0 }),
     status: DS.attr('string'),
-    password: DS.attr('string')
+    password: DS.attr('string'),
+    image: DS.attr('string'),
 });

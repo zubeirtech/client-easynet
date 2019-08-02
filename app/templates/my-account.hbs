@@ -1,8 +1,87 @@
+<br>
+<br>
 <div class="ui container">
-  <h1 class="ui huge header">
-      Hi, {{this.model.user.user_name}}
-  </h1>
+    <div class="ui form">
+      <div class="two fields">
+        <div class="field">
+          <div class="ui raised segment">
+            <div class="two fields">
+              <div class="field">
+                {{#if this.model.user.image}}
+                <img src={{this.model.user.image}} alt="" class="ui small circular image">
+                {{else}}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
+                  class="ui small circular image">
+                {{/if}}
+              </div>
+              <div class="field">
+                {{#if (or model.user.first_name this.model.user.last_name)}}
+                <h1 class="ui header">
+                  {{this.model.user.first_name}} {{model.user.last_name}}
+                  <div class="sub header">{{model.user.user_name}}</div>
+                </h1> <br>
+                <strong>Age: </strong>
+                {{this.model.user.age}}<br>
+                <strong>Status: </strong>
+                {{this.model.user.status}}
+                {{else}}
+                <i>
+                  <h1 class="ui disabled header">
+                    Add your Name
+                    <div class="sub header">{{model.user.user_name}}</div>
+                  </h1>
+                </i>
+                <strong>Age: </strong>
+                {{this.model.user.age}} <br>
+                <strong>Status: </strong>
+                {{this.model.user.status}}
+                {{/if}}
+              </div>
+            </div><br>
+            <div class="field">
+              <label for="">Add image url (File upload will be implemented in future version)</label>
+              <div class="ui input">
+                {{input value=this.imageUrl placeholder="Enter url to change profile picture..." type="text"}}
+              </div>
+              <br> <br>
+              <button class="ui blue button" {{action "changeImage"}}>Edit profile picture</button>
+            </div> <br>
+            <div class="two fields">
+              <div class="field">
+                <label for="">Firstname</label>
+                <div class="ui input">
+                  {{input value=this.model.user.first_name type="text" placeholder="Enter firstname..."}}
+                </div>
+              </div>
+              <div class="field">
+                <label for="">Lastname</label>
+                <div class="ui input">
+                  {{input value=this.model.user.last_name type="text" placeholder="Enter lastname..."}}
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="">Age</label>
+              {{input value=this.model.user.age placeholder="Enter age..." type="number"}}
+            </div><br>
+            <div class="field">
+              <label for="">Status</label>
+              <div class="ui compact input">
+                {{input value=this.model.user.status type="text" placeholder="Enter status..." maxlength="20"}}
+              </div>
+            </div> <br>
+            <div class="field">
+              <label for="">Biography</label>
+              {{textarea value=this.model.user.biography maxlength="400" }}
+            </div><br>
+            <div class="field">
+              <button class="ui inverted blue button" {{action "editUser"}}>
+                Save changes
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
 </div>
-
-
-{{outlet}}

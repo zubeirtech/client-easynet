@@ -36,6 +36,7 @@ export default ToriiAuthenticator.extend({
                 set(this.session.data, 'access_token', access_token);
                 return access_token;
             } catch (error) {
+                document.location.reload();
                 this.get('session').invalidate();
                 console.log(error);
             }
@@ -54,6 +55,7 @@ export default ToriiAuthenticator.extend({
                 set(this.session.data, 'access_token', access_token);
                 return access_token
             } catch (error) {
+                document.location.reload();
                 this.get('session').invalidate();
                 console.log(error);
             }
