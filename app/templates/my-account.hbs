@@ -81,48 +81,52 @@
           <div class="ui raised segment">
             <h1 class="ui header">Your Posts</h1>
             <br>
-            <div class="field">
-              <div class="ui large feed">
-                {{#each model.posts as |post|}}
-                <div class="event">
-                  <div class="label">
-                    {{#if (not-eq this.model.user.image "null")}}
-                    <img src={{this.model.user.image}} alt="" class="ui small circular image">
-                    {{else}}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
-                      class="ui small circular image">
-                    {{/if}}
-                  </div>
-                  <div class="content">
-                    <div class="summary">
-                      {{#if (is-equal (and model.user.first_name model.user.last_name) "null")}}
-                      {{model.user.user_name}}
+            <div style="height: 300px;">
+              {{#ember-scrollable autoHide=false}}
+              <div class="field">
+                <div class="ui large feed">
+                  {{#each model.posts as |post|}}
+                  <div class="event">
+                    <div class="label">
+                      {{#if (not-eq this.model.user.image "null")}}
+                      <img src={{this.model.user.image}} alt="" class="ui small circular image">
                       {{else}}
-                      {{model.user.first_name}} {{model.user.last_name}}
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
+                        class="ui small circular image">
                       {{/if}}
-                      <div class="date">
-                        {{post.attributes.time_ago}}
+                    </div>
+                    <div class="content">
+                      <div class="summary">
+                        {{#if (is-equal (and model.user.first_name model.user.last_name) "null")}}
+                        {{model.user.user_name}}
+                        {{else}}
+                        {{model.user.first_name}} {{model.user.last_name}}
+                        {{/if}}
+                        <div class="date">
+                          {{post.attributes.time_ago}}
+                        </div>
+                      </div>
+                      <div class="extra text">
+                        {{post.attributes.message}}
+                      </div>
+                      <div class="meta">
+                        <a href="" class="like">
+                          <i class="like icon"></i> {{post.attributes.likes.length}}
+                        </a>
+                        <a href="" class="comment">
+                          <i class="comment icon"></i> {{post.attributes.comments.length}}
+                        </a>
+                        <a href="">
+                          Go to Post
+                        </a>
                       </div>
                     </div>
-                    <div class="extra text">
-                      {{post.attributes.message}}
-                    </div>
-                    <div class="meta">
-                      <a href="" class="like">
-                        <i class="like icon"></i> {{post.attributes.likes.length}}
-                      </a>
-                      <a href="" class="comment">
-                        <i class="comment icon"></i> {{post.attributes.comments.length}}
-                      </a>
-                      <a href="">
-                        Go to Post
-                      </a>
-                    </div>
                   </div>
+                  <div class="ui divider"></div>
+                  {{/each}}
                 </div>
-                <div class="ui divider"></div>
-                {{/each}}
               </div>
+              {{/ember-scrollable}}
             </div>
           </div>
         </div><br>
@@ -130,48 +134,43 @@
           <div class="ui raised segment">
             <h1 class="ui header">Your Friends</h1>
             <br>
-            <div class="field">
-              <div class="ui large feed">
-                {{#each model.friends as |post|}}
-                <div class="event">
-                  <div class="label">
-                    {{#if (not-eq this.model.user.image "null")}}
-                    <img src={{this.model.user.image}} alt="" class="ui small circular image">
-                    {{else}}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
-                      class="ui small circular image">
-                    {{/if}}
-                  </div>
-                  <div class="content">
-                    <div class="summary">
-                      {{#if (is-equal (and model.user.first_name model.user.last_name) "null")}}
-                      {{model.user.user_name}}
+            <div style="height: 300px;">
+              {{#ember-scrollable autoHide=false}}
+              <div class="field">
+                <div class="ui large feed">
+                  {{#each model.friends as |friend|}}
+                  <div class="event">
+                    <div class="label">
+                      {{#if (not-eq friend.attributes.friend.image "null")}}
+                      <img src={{friend.attributes.friend.image}} alt="" class="ui small circular image">
                       {{else}}
-                      {{model.user.first_name}} {{model.user.last_name}}
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
+                        class="ui small circular image">
                       {{/if}}
-                      <div class="date">
-                        {{post.attributes.time_ago}}
+                    </div>
+                    <div class="content">
+                      <div class="summary">
+                        {{#if friend.attributes.friend.first_name}}
+                        {{friend.attributes.friend.first_name}} {{friend.attributes.friend.last_name}}
+                        {{else}}
+                        {{friend.attributes.friend.user_name}}
+                        {{/if}}
+                      </div>
+                      <div class="extra text">
+                        {{friend.attributes.friend.status}}
+                      </div>
+                      <div class="meta">
+                        <a href="">
+                          Go to Profile
+                        </a>
                       </div>
                     </div>
-                    <div class="extra text">
-                      {{post.attributes.message}}
-                    </div>
-                    <div class="meta">
-                      <a href="" class="like">
-                        <i class="like icon"></i> {{post.attributes.likes.length}}
-                      </a>
-                      <a href="" class="comment">
-                        <i class="comment icon"></i> {{post.attributes.comments.length}}
-                      </a>
-                      <a href="">
-                        Go to Post
-                      </a>
-                    </div>
                   </div>
+                  <div class="ui divider"></div>
+                  {{/each}}
                 </div>
-                <div class="ui divider"></div>
-                {{/each}}
               </div>
+              {{/ember-scrollable}}
             </div>
           </div>
         </div>
