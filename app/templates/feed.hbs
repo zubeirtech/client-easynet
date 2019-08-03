@@ -39,9 +39,15 @@
 						{{post.attributes.message}}
 					</div>
 					<div class="meta">
-						<a class="like">
-							<i class="like icon"></i> {{post.attributes.likes.length}}
-						</a>
+						{{#if  post.hasliked}}			
+						  <a class="like" {{action "dislike" post}} >
+						  	<i class="like icon" style="color: red"></i> {{post.attributes.likes.length}}
+						  </a>
+						{{else}}
+						  <a class="like" {{action "like" post}}>
+						  	<i class="like icon"></i> {{post.attributes.likes.length}}
+						  </a>
+						{{/if}}
 						<a class="comment">
 							<i class="comment icon"></i> {{post.attributes.comments.length}}
 						</a>
