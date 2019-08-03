@@ -11,7 +11,7 @@ export default Controller.extend({
         async addComment(comment, post) {
             try {
                 set(this, 'comment', '');
-                await this.ajax.request('/comments', {
+                const res = await this.ajax.request('/comments', {
                     method: 'POST',
                     data: {
                         message: comment,
@@ -20,14 +20,15 @@ export default Controller.extend({
                         post_id: post.id
                     }
                 });
+                post.attributes.comments.pushObject(res.data.attributes);
                 this.toast.success('Succesfully added Comment', 'Success')
-                document.location.reload();
+                //document.location.reload();
             } catch (error) {
                 console.log(error);
             }
         },
         
-        async deleteComment(comment) { 
+        async deleteComment(comment, post) { 
             try {
                 await this.ajax.request('/comments', {
                     method: 'DELETE',
@@ -35,7 +36,7 @@ export default Controller.extend({
                         id: comment.comment_id,
                     }
                 });
-                document.location.reload();
+                post.attributes.comments.removeObject(comment);
             } catch (error) {
                 console.log(error);
             }
