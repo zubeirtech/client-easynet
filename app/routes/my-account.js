@@ -15,12 +15,10 @@ export default Route.extend(AuthenticatedRouteMixin, {
     async afterModel(model) {
         const modelArr = model.user.toArray();
         set(model, 'user', modelArr[0]);
-        const res = await this.ajax.request(`/posts?user_name=${model.user.user_name}`);
-        set(model, 'posts', res.data);
-        const posts = res.data;
-        posts.forEach(post => {
-            
-        });
+        const resPosts = await this.ajax.request(`/posts?user_name=${model.user.user_name}`);
+        set(model, 'posts', resPosts.data);
+        const resFriends = await this.ajax.request(`/people-by-user?user_name=${model.user.user_name}`);
+        set(model, 'friends', resFriends.data);
         console.log(model);
     }
 });
