@@ -1,8 +1,8 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-    person: DS.belongsTo({ async: false }),
-    post: DS.belongsTo({ async: false }),
+    author: DS.attr('string'),
+    post_id: DS.attr('string'),
     message: DS.attr('string'),
     created: DS.attr('date')
 });
