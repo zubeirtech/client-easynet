@@ -7,7 +7,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     init() {
         this._super(...arguments);
-        console.log(this.session);
     }
 
 });

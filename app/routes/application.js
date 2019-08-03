@@ -3,6 +3,6 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 export default Route.extend(ApplicationRouteMixin, {
     beforeModel() {
-        this.transitionTo('feed');
+        this.transitionTo('my-account');
     }
 });

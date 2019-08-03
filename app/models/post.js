@@ -5,5 +5,5 @@ export default DS.Model.extend({
     message: DS.attr('string'),
     created: DS.attr('date'),
     comments: DS.hasMany('comment'),
-    likes: DS.hasMany('likes')
+    likes: DS.hasMany('like')
 });
