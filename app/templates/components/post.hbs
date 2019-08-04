@@ -1,0 +1,100 @@
+<div class="ui raised segment">
+		<div class="ui feed">
+			<div class="event">
+				<div class="label">
+					{{#if (not-eq this.model.user.image "null")}}
+					<img src={{this.model.user.image}} alt="" class="ui small circular image">
+					{{else}}
+					<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
+						class="ui small circular image">
+					{{/if}}
+				</div>
+				<div class="content">
+					<div class="summary">
+						{{#if (is-equal (and model.user.first_name model.user.last_name) "null")}}
+						{{model.user.user_name}}
+						{{else}}
+						{{model.user.first_name}} {{model.user.last_name}}
+						{{/if}}
+						<div class="date">
+							{{post.attributes.time_ago}}
+						</div>
+					</div>
+					<div class="extra text">
+						{{post.attributes.message}}
+					</div>
+					<div class="meta">
+						{{#if running}}
+						  <a class="like">
+						  	<i class="like icon" style=""></i>
+						  </a>
+						{{else}}
+						  {{#if  post.hasliked}}			
+						    <a class="like" {{action "dislike" post}} >
+						    	<i class="like icon" style="color: red"></i> {{post.attributes.likes.length}}
+						    </a>
+						  {{else}}
+						    <a class="like" {{action "like" post}}>
+						    	<i class="like icon"></i> {{post.attributes.likes.length}}
+						    </a>
+						  {{/if}}
+						{{/if}}
+						<a class="comment">
+							<i class="comment icon"></i> {{post.attributes.comments.length}}
+						</a>
+						{{#if activeComment}}
+						  <a {{action (mut activeComment) false}}>
+								Close comments
+							</a>
+						{{else}}
+						  <a {{action (mut activeComment) true}}>
+								Open comments
+							</a>
+						{{/if}}
+						<a href="">
+							Go to Post
+						</a>
+					</div>
+					<br><br>
+					<div class="ui fluid input" >
+						{{input value=this.comment type="text" placeholder="Add a comment..." enter=(action "addComment" this.comment post)}}
+					</div>
+					<div class="ui divider"></div>
+					{{#if activeComment}}
+					  <div style="height: 200px;">
+					  	{{#ember-scrollable}}
+					  		<div class="ui comments">
+					  			{{#each post.attributes.comments as |comment|}}
+										<div class="comment">
+											<a class="avatar">
+												{{#if (not-eq comment.author.image "null")}}
+												<img src={{comment.author.image}} alt="" class="ui small circular image">
+												{{else}}
+												<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
+													class="ui small circular image">
+												{{/if}}
+											</a>
+											<div class="content">
+												<a class="author">{{comment.author.first_name}} {{comment.author.last_name}}</a>
+												<div class="metadata">
+													<div class="date">{{comment.time_ago}}</div>
+												  {{#if (is-equal model.user.user_name comment.author.user_name)}}
+												  	<a {{action "deleteComment" comment post}}>
+												  		<i class="trash icon" style="color: red"></i>
+												  	</a>
+												  {{/if}}
+												</div>
+												<div class="text">
+													{{comment.message}}
+												</div>
+											</div>
+										</div>
+					  			{{/each}}
+					  		</div>
+					  	{{/ember-scrollable}}
+					  </div>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</div> <br>

@@ -1,32 +1,10 @@
-import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 import { set } from '@ember/object';
+import { inject as service } from '@ember/service';
 
-export default Controller.extend({
+export default Component.extend({
     ajax: service(),
-    toast: service(),
-    router: service(),
 
-    getObjectPropertyList(arr) {
-        let list = []
-        arr.forEach(element => {
-            const { prop } = element
-            list.pushObject(prop);
-        });
-        return list;
-    },
-
-    setup(model) {
-        const posts = model.posts;
-        posts.forEach(post => {
-            const likes = post.attributes.likes;
-            likes.forEach(like => {
-                if (like.user_name === this.model.user.user_name) {
-                    set(post, 'hasliked', true);
-                }
-            });
-        });
-    },
     actions: {
         async addComment(comment, post) {
             try {
@@ -47,8 +25,8 @@ export default Controller.extend({
                 console.log(error);
             }
         },
-        
-        async deleteComment(comment, post) { 
+
+        async deleteComment(comment, post) {
             try {
                 await this.ajax.request('/comments', {
                     method: 'DELETE',
@@ -64,7 +42,7 @@ export default Controller.extend({
 
         async like(post) {
             try {
-                set(this, 'running', true);                
+                set(this, 'running', true);
                 const res = await this.ajax.request('/likes', {
                     method: 'POST',
                     data: {
@@ -74,7 +52,7 @@ export default Controller.extend({
                 });
                 post.attributes.likes.pushObject(res);
                 set(post, 'hasliked', true);
-                set(this, 'running', false);                
+                set(this, 'running', false);
             } catch (error) {
                 console.log(error);
             }
@@ -99,23 +77,5 @@ export default Controller.extend({
                 console.log(error);
             }
         },
-
-        async addPost() {
-            try {
-                set(this, 'disabled', true);
-
-                await this.ajax.request('/posts', {
-                    method: 'POST',
-                    data: {
-                        message: this.message,
-                        author: this.model.user.user_name,
-                    }
-                });
-                window.location.href = '';
-                set(this, 'disabled', false);
-            } catch (error) {
-                console.log(error);
-            }
-        }
     }
 });
