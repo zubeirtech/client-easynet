@@ -160,9 +160,9 @@
                         {{friend.attributes.friend.status}}
                       </div>
                       <div class="meta">
-                        <a href="">
-                          Go to Profile
-                        </a>
+                        {{#link-to "people" friend.attributes.friend.id}}
+                          Go To Profile
+                        {{/link-to}}
                       </div>
                     </div>
                   </div>
