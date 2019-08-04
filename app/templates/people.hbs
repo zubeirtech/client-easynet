@@ -1,1 +1,151 @@
-{{outlet}}
+<br>
+<br>
+<div class="ui container">
+	<div class="ui form">
+		<div class="two fields">
+			<div class="field">
+				<div class="ui raised segment">
+					<div class="two fields">
+						<div class="field">
+							{{#if (not-eq this.model.image "null")}}
+							<img src={{this.model.image}} alt="" class="ui small circular image">
+							{{else}}
+							<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
+								class="ui small circular image">
+							{{/if}}
+						</div>
+						<div class="field">
+							{{#if (or model.first_name this.model.last_name)}}
+							<h1 class="ui header">
+								{{this.model.first_name}} {{model.last_name}}
+								<div class="sub header">{{model.user_name}}</div>
+							</h1> <br>
+							<strong>Age: </strong>
+							{{this.model.age}}<br>
+							<strong>Status: </strong>
+							{{this.model.status}}
+							{{else}}
+							<i>
+								<h1 class="ui disabled header">
+									Add your Name
+									<div class="sub header">{{model.user_name}}</div>
+								</h1>
+							</i>
+							<strong>Age: </strong>
+							{{this.model.age}} <br>
+							<strong>Status: </strong>
+							{{this.model.status}}
+							{{/if}}
+						</div>
+					</div><br>
+					<div class="field">
+						{{#if model.isFriend}}
+						  <button class="ui red inverted button" {{action "unfollow"}}>Unfollow</button>
+						{{else}}
+						  <button class="ui blue button" {{action "follow"}}>Follow</button>
+						{{/if}}
+					</div> <br>
+					<div class="field">
+						<label for="">Biography</label>
+						{{this.model.biography}}
+					</div><br>
+				</div>
+			</div>
+			<div class="field">
+				<div class="field">
+					<div class="ui raised segment">
+						<h1 class="ui header">Posts</h1>
+						<br>
+						<div style="height: 300px;">
+							{{#ember-scrollable autoHide=false}}
+							<div class="field">
+								<div class="ui large feed">
+									{{#each model.posts as |post|}}
+									<div class="event">
+										<div class="label">
+											{{#if (not-eq this.model.image "null")}}
+											<img src={{this.model.image}} alt="" class="ui small circular image">
+											{{else}}
+											<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
+												class="ui small circular image">
+											{{/if}}
+										</div>
+										<div class="content">
+											<div class="summary">
+												{{#if (is-equal (and model.first_name model.last_name) "null")}}
+												{{model.user.user_name}}
+												{{else}}
+												{{model.first_name}} {{model.last_name}}
+												{{/if}}
+												<div class="date">
+													{{post.time_ago}}
+												</div>
+											</div>
+											<div class="extra text">
+												{{post.message}}
+											</div>
+											<div class="meta">
+												<a class="like">
+													<i class="like icon"></i> {{post.likes_length}}
+												</a>
+												<a  class="comment">
+													<i class="comment icon"></i> {{post.comment_length}}
+												</a>
+												<a>
+													Go to Post
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="ui divider"></div>
+									{{/each}}
+								</div>
+							</div>
+							{{/ember-scrollable}}
+						</div>
+					</div>
+				</div><br>
+				<div class="field">
+					<div class="ui raised segment">
+						<h1 class="ui header">Friends</h1>
+						<br>
+						<div style="height: 300px;">
+							{{#ember-scrollable autoHide=false}}
+							<div class="field">
+								<div class="ui large feed">
+									{{#each model.friends as |friend|}}
+									<div class="event">
+										<div class="label">
+											{{#if (not-eq friend.person.image "null")}}
+											<img src={{friend.person.image}} alt="" class="ui small circular image">
+											{{else}}
+											<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
+												class="ui small circular image">
+											{{/if}}
+										</div>
+										<div class="content">
+											<div class="summary">
+												{{friend.person.first_name}} {{friend.person.last_name}}
+											</div>
+											<div class="extra text">
+												{{friend.person.status}}
+											</div>
+											<div class="meta">
+												<a href="">
+													Go to Profile
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="ui divider"></div>
+									{{/each}}
+								</div>
+							</div>
+							{{/ember-scrollable}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

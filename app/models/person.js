@@ -8,5 +8,8 @@ export default DS.Model.extend({
     age: DS.attr('number', { defaultValue: 0 }),
     status: DS.attr('string'),
     password: DS.attr('string'),
-    image: DS.attr('string')
+    image: DS.attr('string'),
+    posts: DS.attr(),
+    friends: DS.attr(),
+    isFriend: DS.attr()
 });
