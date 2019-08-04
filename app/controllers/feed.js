@@ -41,7 +41,7 @@ export default Controller.extend({
                         post_id: post.id
                     }
                 });
-                post.attributes.comments.pushObject(res.data.attributes);
+                post.attributes.comments.unshiftObject(res.data.attributes);
                 this.toast.success('Succesfully added Comment', 'Success')
                 //document.location.reload();
             } catch (error) {
@@ -96,6 +96,24 @@ export default Controller.extend({
                 post.attributes.likes.removeObject(like);
                 set(post, 'hasliked', false);
                 set(this, 'running', false)
+            } catch (error) {
+                console.log(error);
+            }
+        },
+
+        async addPost() {
+            try {
+                set(this, 'disabled', true);
+
+                await this.ajax.request('/posts', {
+                    method: 'POST',
+                    data: {
+                        message: this.message,
+                        author: this.model.user.user_name,
+                    }
+                });
+                window.location.href = '';
+                set(this, 'disabled', false);
             } catch (error) {
                 console.log(error);
             }

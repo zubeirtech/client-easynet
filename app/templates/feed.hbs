@@ -4,9 +4,13 @@
 	<div class="ui form">
 		<div class="field">
 			<h1 class="ui medium header">What's on your mind?</h1>
-			{{textarea value=value maxlength="500" placeholder="Enter..." rows="4"}}
+			{{textarea value=this.message maxlength="500" placeholder="Enter..." rows="4"}}
 			<br><br>
-			<button class="ui blue button">Post</button>
+			{{#if disabled}}
+			  <button class="ui disabled blue button">Post</button>
+			{{else}}
+			  <button class="ui blue button" {{action "addPost" }}>Post</button>			  
+			{{/if}}
 		</div>
 		<div class="ui divider"></div>
 		<div class="field">
