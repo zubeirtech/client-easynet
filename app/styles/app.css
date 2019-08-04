@@ -38,7 +38,6 @@ body {
 }
 .ui.mobile.only.grid .ui.vertical.menu .dropdown.icon:before {
   background-color: #283e4a !important;
-
 }
 .item {
   color: white !important;
@@ -69,4 +68,8 @@ footer p {
 }
 .name:hover {
   text-decoration: underline;
+}
+
+a:hover {
+  color: blue
 }

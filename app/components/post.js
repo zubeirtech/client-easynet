@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
     ajax: service(),
+    activeComment: true,
 
     actions: {
         async addComment(comment, post) {

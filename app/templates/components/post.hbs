@@ -12,9 +12,13 @@
 				<div class="content">
 					<div class="summary">
 						{{#if (is-equal (and model.user.first_name model.user.last_name) "null")}}
-						{{model.user.user_name}}
+              {{#link-to "people" model.user.id}}
+						    {{model.user.user_name}}
+              {{/link-to}}
 						{{else}}
-						{{model.user.first_name}} {{model.user.last_name}}
+              {{#link-to "people" model.user.id}}
+						    {{model.user.first_name}} {{model.user.last_name}}
+              {{/link-to}}
 						{{/if}}
 						<div class="date">
 							{{post.attributes.time_ago}}

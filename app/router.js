@@ -13,6 +13,8 @@ Router.map(function() {
   this.route('privacy-policy');
   this.route('my-account');
   this.route('about');
+  this.route('user');
+  this.route('people', { path: 'people/:person_id' });
 });
 
 export default Router;
