@@ -65,7 +65,7 @@ export default Controller.extend({
 
         async like(post) {
             try {
-                console.log('like')
+                set(this, 'running', true);                
                 const res = await this.ajax.request('/likes', {
                     method: 'POST',
                     data: {
@@ -73,8 +73,9 @@ export default Controller.extend({
                         user_name: this.model.user.user_name
                     }
                 });
-                post.attributes.likes.pushObject(res.data);
+                post.attributes.likes.pushObject(res);
                 set(post, 'hasliked', true);
+                set(this, 'running', false);                
             } catch (error) {
                 console.log(error);
             }
@@ -82,7 +83,7 @@ export default Controller.extend({
 
         async dislike(post) {
             try {
-                console.log('dislike')
+                set(this, 'running', true)
                 const likes = post.attributes.likes
                 const like = likes.find(like => like.user_name === this.model.user.user_name);
                 console.log(like);
@@ -94,6 +95,7 @@ export default Controller.extend({
                 })
                 post.attributes.likes.removeObject(like);
                 set(post, 'hasliked', false);
+                set(this, 'running', false)
             } catch (error) {
                 console.log(error);
             }
