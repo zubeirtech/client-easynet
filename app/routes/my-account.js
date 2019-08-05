@@ -6,18 +6,27 @@ import { inject as service } from '@ember/service';
 
 export default Route.extend(AuthenticatedRouteMixin, {
     ajax: service(),
+    session: service(),
 
     model() {
         return RSVP.hash({
             user: this.store.findAll('person')
         })
     },
+
+    getAccessToken(session) {
+        if (session.data.authenticated.authenticator === 'authenticator:oauth2') {
+            return session.data.authenticated.access_token
+        }
+        return session.data.access_token;
+    },
+
     async afterModel(model) {
         const modelArr = model.user.toArray();
         set(model, 'user', modelArr[0]);
-        const resPosts = await this.ajax.request(`/posts?user_name=${model.user.user_name}`);
+        const resPosts = await this.ajax.request(`/posts?access_token=${this.getAccessToken(this.session)}`);
         set(model, 'posts', resPosts.data);
-        const resFriends = await this.ajax.request(`/people-by-user?user_name=${model.user.user_name}`);
+        const resFriends = await this.ajax.request(`/people-by-user?access_token=${this.getAccessToken(this.session)}`);
         set(model, 'friends', resFriends.data);
     }
 });

@@ -113,7 +113,7 @@
                         <a class="like">
                           <i class="like icon"></i> {{post.attributes.likes.length}}
                         </a>
-                        <a href="" class="comment">
+                        <a class="comment">
                           <i class="comment icon"></i> {{post.attributes.comments.length}}
                         </a>
                         <a >
@@ -130,50 +130,6 @@
             </div>
           </div>
         </div><br>
-        <div class="field">
-          <div class="ui raised segment">
-            <h1 class="ui header">Your Friends</h1>
-            <br>
-            <div style="height: 300px;">
-              {{#ember-scrollable autoHide=false}}
-              <div class="field">
-                <div class="ui large feed">
-                  {{#each model.friends as |friend|}}
-                  <div class="event">
-                    <div class="label">
-                      {{#if (not-eq friend.attributes.friend.image "null")}}
-                      <img src={{friend.attributes.friend.image}} alt="" class="ui small circular image">
-                      {{else}}
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
-                        class="ui small circular image">
-                      {{/if}}
-                    </div>
-                    <div class="content">
-                      <div class="summary">
-                        {{#if friend.attributes.friend.first_name}}
-                        {{friend.attributes.friend.first_name}} {{friend.attributes.friend.last_name}}
-                        {{else}}
-                        {{friend.attributes.friend.user_name}}
-                        {{/if}}
-                      </div>
-                      <div class="extra text">
-                        {{friend.attributes.friend.status}}
-                      </div>
-                      <div class="meta">
-                        {{#link-to "people" friend.attributes.friend.id}}
-                          Go To Profile
-                        {{/link-to}}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="ui divider"></div>
-                  {{/each}}
-                </div>
-              </div>
-              {{/ember-scrollable}}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

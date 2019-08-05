@@ -12,6 +12,9 @@ export default Controller.extend({
                 this.get('session').authenticate('authenticator:oauth2', username, password).catch((reason) => {
                     this.set('errorMessage', reason.error || reason);
                 });
+                setTimeout(() => {
+                    window.location.href = '/feed'
+                }, 500);
             } catch (error) {
                 if (error) {
                     this.toastr.error('Password or username is wrong', 'Error')

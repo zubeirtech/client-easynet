@@ -2,8 +2,8 @@
 		<div class="ui feed">
 			<div class="event">
 				<div class="label">
-					{{#if (not-eq this.model.user.image "null")}}
-					<img src={{this.model.user.image}} alt="" class="ui small circular image">
+					{{#if (not-eq post.attributes.person.image "null")}}
+					<img src={{post.attributes.person.image}} alt="" class="ui small circular image">
 					{{else}}
 					<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
 						class="ui small circular image">
@@ -11,14 +11,14 @@
 				</div>
 				<div class="content">
 					<div class="summary">
-						{{#if (is-equal (and model.user.first_name model.user.last_name) "null")}}
-              {{#link-to "people" model.user.id}}
-						    {{model.user.user_name}}
-              {{/link-to}}
-						{{else}}
-              {{#link-to "people" model.user.id}}
-						    {{model.user.first_name}} {{model.user.last_name}}
-              {{/link-to}}
+						{{#if (is-equal (and post.attributes.person.first_name post.attributes.person.last_name) "null")}}
+                          {{#link-to "people" post.attributes.person.id}}
+                             {{post.attributes.person.user_name}}
+                          {{/link-to}}
+						    {{else}}
+                          {{#link-to "people" post.attributes.person.id}}
+                             {{post.attributes.person.first_name}} {{post.attributes.person.last_name}}
+                          {{/link-to}}
 						{{/if}}
 						<div class="date">
 							{{post.attributes.time_ago}}

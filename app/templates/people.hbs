@@ -38,13 +38,7 @@
 							{{/if}}
 						</div>
 					</div><br>
-					<div class="field">
-						{{#if model.is_friend}}
-						  <button class="ui red inverted button" {{action "unfollow"}}>Unfollow</button>
-						{{else}}
-						  <button class="ui blue button" {{action "follow"}}>Follow</button>
-						{{/if}}
-					</div> <br>
+	
 					<div class="field">
 						<label for="">Biography</label>
 						{{this.model.biography}}
@@ -105,46 +99,6 @@
 						</div>
 					</div>
 				</div><br>
-				<div class="field">
-					<div class="ui raised segment">
-						<h1 class="ui header">Friends</h1>
-						<br>
-						<div style="height: 300px;">
-							{{#ember-scrollable autoHide=false}}
-							<div class="field">
-								<div class="ui large feed">
-									{{#each model.friends as |friend|}}
-									<div class="event">
-										<div class="label">
-											{{#if (not-eq friend.person.image "null")}}
-											<img src={{friend.person.image}} alt="" class="ui small circular image">
-											{{else}}
-											<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
-												class="ui small circular image">
-											{{/if}}
-										</div>
-										<div class="content">
-											<div class="summary">
-												{{friend.person.first_name}} {{friend.person.last_name}}
-											</div>
-											<div class="extra text">
-												{{friend.person.status}}
-											</div>
-											<div class="meta">
-												{{#link-to "people" friend.person.id}}
-													Go to Profile													
-												{{/link-to}}
-											</div>
-										</div>
-									</div>
-									<div class="ui divider"></div>
-									{{/each}}
-								</div>
-							</div>
-							{{/ember-scrollable}}
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
