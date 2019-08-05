@@ -16,7 +16,7 @@
     "lint:js": "eslint .",
     "start": "ember serve",
     "test": "ember test",
-    "proxy": "ember server --proxy http://localhost:5000"
+    "proxy": "ember server --proxy https://api-easynet.herokuapp.com"
   },
   "devDependencies": {
     "@ember/jquery": "^0.5.2",

@@ -3,7 +3,7 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import { inject as service } from '@ember/service';
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
-    host: 'http://localhost:5000',
+    host: 'https://api-easynet.herokuapp.com',
     session: service('session'),
 
     authorize(xhr) {
