@@ -11,5 +11,5 @@ export default DS.Model.extend({
     image: DS.attr('string'),
     posts: DS.attr(),
     friends: DS.attr(),
-    isFriend: DS.attr()
+    is_friend: DS.attr()
 });

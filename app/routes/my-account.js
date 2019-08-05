@@ -19,6 +19,5 @@ export default Route.extend(AuthenticatedRouteMixin, {
         set(model, 'posts', resPosts.data);
         const resFriends = await this.ajax.request(`/people-by-user?user_name=${model.user.user_name}`);
         set(model, 'friends', resFriends.data);
-        console.log(model);
     }
 });
