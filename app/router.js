@@ -15,6 +15,11 @@ Router.map(function() {
   this.route('about');
   this.route('user');
   this.route('people', { path: 'people/:person_id' });
+  this.route('posts', function() {
+    this.route('info', { path: ':post_id' }, function() {
+      this.route('likes');
+    });
+  });
 });
 
 export default Router;
