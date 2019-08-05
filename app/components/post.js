@@ -64,7 +64,6 @@ export default Component.extend({
                 set(this, 'running', true)
                 const likes = post.attributes.likes
                 const like = likes.find(like => like.user_name === this.model.user.user_name);
-                console.log(like);
                 await this.ajax.request('/likes', {
                     method: 'DELETE',
                     data: {
