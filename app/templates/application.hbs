@@ -51,7 +51,7 @@
 			{{/link-to}}
 			{{#if session.isAuthenticated}}
 			<a class="item">
-				<button class="ui inverted button">Log out</button>
+				<button class="ui inverted button" {{action "invalidateSession"}}>Log out</button>
 			</a>
 			{{else}}
 			{{#link-to "login" class="item"}}

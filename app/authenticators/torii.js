@@ -37,7 +37,7 @@ export default ToriiAuthenticator.extend({
                 return access_token;
             } catch (error) {
                 document.location.reload();
-                this.get('session').invalidate();
+                this.session.invalidate();
                 console.log(error);
             }
         } else if (provider === 'facebook-oauth2') {
@@ -56,7 +56,7 @@ export default ToriiAuthenticator.extend({
                 return access_token
             } catch (error) {
                 document.location.reload();
-                this.get('session').invalidate();
+                this.session.invalidate();
                 console.log(error);
             }
         }
