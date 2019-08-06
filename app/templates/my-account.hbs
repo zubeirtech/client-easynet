@@ -69,11 +69,24 @@
             <label for="">Biography</label>
             {{textarea value=this.model.user.biography maxlength="400" }}
           </div><br>
-          <div class="field">
-            <button class="ui inverted blue button" {{action "editUser"}}>
-              Save changes
-            </button>
-          </div>
+            <div class="field">
+              <button class="ui inverted blue button" {{action "editUser"}}>
+                <i class="save icon"></i> Save changes
+              </button>
+            </div><br>
+            <div class="field">
+              {{#if activeDelete}}
+                <div class="ui red segment">
+                  By deleting this account all Posts and comments will be deleted. Are you sure? <br><br>
+                  <button class="ui blue button" {{action (mut activeDelete) false}}>No, this app is too awesome</button><br>
+                  <button class="ui red button" {{action "deleteAccount"}}>Yes, destroy me please</button>
+                </div>
+              {{else}}
+                <button class="ui red button" {{action (mut activeDelete) true}}>
+                  <i class="trash icon"></i> Delete Account
+                </button>
+              {{/if}}
+            </div>
         </div>
       </div>
       <div class="field">

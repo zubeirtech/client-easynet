@@ -3,6 +3,8 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
     toastr: service('toast'),
+    session: service(),
+    ajax: service(),
 
     actions: {
         // async changeImage() {
@@ -19,6 +21,19 @@ export default Controller.extend({
             try {
                 await this.model.user.save();
                 document.location.reload();
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async deleteAccount() {
+            try {
+                await this.ajax.request('/people', {
+                    method: 'DELETE',
+                    data: {
+                        user_name: this.model.user.user_name
+                    }
+                });
+                this.session.invalidate();
             } catch (error) {
                 console.log(error);
             }

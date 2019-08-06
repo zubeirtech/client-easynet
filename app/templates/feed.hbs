@@ -7,9 +7,9 @@
 			{{textarea value=this.message maxlength="500" placeholder="Enter..." rows="4"}}
 			<br><br>
 			{{#if disabled}}
-			  <button class="ui disabled blue button">Post</button>
+			  <button class="ui disabled blue button"><i class="edit outline icon"></i> Post</button>
 			{{else}}
-			  <button class="ui blue button" {{action "addPost" }}>Post</button>			  
+			  <button class="ui blue button" {{action "addPost" }}> <i class="edit outline icon"></i> Post</button>			  
 			{{/if}}
 		</div>
 		<div class="ui divider"></div>
