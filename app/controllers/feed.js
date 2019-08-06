@@ -31,7 +31,7 @@ export default Controller.extend({
         async addComment(comment, post) {
             try {
                 set(this, 'comment', '');
-                const res = await this.ajax.request('/comments', {
+                const res = await this.ajax.request('https://api-easynet.herokuapp.com/comments', {
                     method: 'POST',
                     data: {
                         message: comment,
@@ -50,7 +50,7 @@ export default Controller.extend({
         
         async deleteComment(comment, post) { 
             try {
-                await this.ajax.request('/comments', {
+                await this.ajax.request('https://api-easynet.herokuapp.com/comments', {
                     method: 'DELETE',
                     data: {
                         id: comment.comment_id,
@@ -65,7 +65,7 @@ export default Controller.extend({
         async like(post) {
             try {
                 set(this, 'running', true);                
-                const res = await this.ajax.request('/likes', {
+                const res = await this.ajax.request('https://api-easynet.herokuapp.com/likes', {
                     method: 'POST',
                     data: {
                         post_id: post.id,
@@ -86,7 +86,7 @@ export default Controller.extend({
                 const likes = post.attributes.likes
                 const like = likes.find(like => like.user_name === this.model.user.user_name);
                 console.log(like);
-                await this.ajax.request('/likes', {
+                await this.ajax.request('https://api-easynet.herokuapp.com/likes', {
                     method: 'DELETE',
                     data: {
                         id: like.id
@@ -104,7 +104,7 @@ export default Controller.extend({
             try {
                 set(this, 'disabled', true);
 
-                await this.ajax.request('/posts', {
+                await this.ajax.request('https://api-easynet.herokuapp.com/posts', {
                     method: 'POST',
                     data: {
                         message: this.message,

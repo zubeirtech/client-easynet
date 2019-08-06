@@ -6,7 +6,7 @@ export default ToriiAuthenticator.extend({
     torii: service(),
     session: service(),
     ajax: service(),
-    serverTokenEndpoint: 'http://localhost:5000/auth-google',
+    serverTokenEndpoint: 'https://api-easynet.herokuapp.com/auth-google',
     access_token: computed('this.session', function () {
         return this.session.access_token;
     }),
@@ -24,7 +24,7 @@ export default ToriiAuthenticator.extend({
         if (provider === 'google-oauth2') {
             try {
                 const authResponse = await this.torii.open(provider, options);
-                const res = await this.get('ajax').request('/auth-google', {
+                const res = await this.get('ajax').request('https://api-easynet.herokuapp.com/auth-google', {
                     method: 'POST',
                     data: {
                         code: authResponse.authorizationCode,
@@ -43,7 +43,7 @@ export default ToriiAuthenticator.extend({
         } else if (provider === 'facebook-oauth2') {
             try {
                 const authResponse = await this.torii.open(provider, options);
-                const res = await this.get('ajax').request('/auth-facebook', {
+                const res = await this.get('ajax').request('https://api-easynet.herokuapp.com/auth-facebook', {
                     method: 'POST',
                     data: {
                         code: authResponse.authorizationCode,

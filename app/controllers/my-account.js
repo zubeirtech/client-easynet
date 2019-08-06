@@ -27,7 +27,7 @@ export default Controller.extend({
         },
         async deleteAccount() {
             try {
-                await this.ajax.request('/people', {
+                await this.ajax.request('https://api-easynet.herokuapp.com/people', {
                     method: 'DELETE',
                     data: {
                         user_name: this.model.user.user_name

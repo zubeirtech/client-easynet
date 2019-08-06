@@ -24,9 +24,9 @@ export default Route.extend(AuthenticatedRouteMixin, {
     async afterModel(model) {
         const modelArr = model.user.toArray();
         set(model, 'user', modelArr[0]);
-        const resPosts = await this.ajax.request(`/posts?access_token=${this.getAccessToken(this.session)}`);
+        const resPosts = await this.ajax.request(`https://api-easynet.herokuapp.com/posts?access_token=${this.getAccessToken(this.session)}`);
         set(model, 'posts', resPosts.data);
-        const resFriends = await this.ajax.request(`/people-by-user?access_token=${this.getAccessToken(this.session)}`);
+        const resFriends = await this.ajax.request(`https://api-easynet.herokuapp.com/people-by-user?access_token=${this.getAccessToken(this.session)}`);
         set(model, 'friends', resFriends.data);
     }
 });

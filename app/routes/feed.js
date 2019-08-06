@@ -27,7 +27,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
             this.toast.warning('Please add your name in your profile settings', 'Warning');
             this.transitionTo('my-account');
         }
-        const postRes = await this.ajax.request('/all-posts');
+        const postRes = await this.ajax.request('https://api-easynet.herokuapp.com/all-posts');
         set(model, 'posts', postRes.data);
     },
 

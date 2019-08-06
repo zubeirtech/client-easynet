@@ -17,7 +17,7 @@ export default Controller.extend({
 
         async follow() {
             
-            await this.ajax.request('/friends', {
+            await this.ajax.request('https://api-easynet.herokuapp.com/friends', {
                 method: 'POST',
                 data: {
                     friend: this.model.user_name,
