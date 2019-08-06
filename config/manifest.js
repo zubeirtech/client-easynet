@@ -5,8 +5,8 @@ module.exports = function(/* environment, appConfig */) {
   // supported properties
 
   return {
-    name: "client",
-    short_name: "client",
+    name: "Easynet",
+    short_name: "Easynet",
     description: "",
     start_url: "/",
     display: "standalone",
