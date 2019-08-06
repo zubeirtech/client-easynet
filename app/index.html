@@ -12,6 +12,9 @@
 
     {{content-for "head"}}
 
+    <link rel="manifest" href="{{rootURL}}manifest.webmanifest">
+    <meta name="msapplication-config" content="{{rootURL}}browserconfig.xml">
+
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css" />
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/client.css" />
     <link rel="apple-touch-icon" sizes="57x57" href="https://imgur.com/HrD1F2p.png">
@@ -45,6 +48,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script>
+      if (location.protocol != 'https:')
+      {
+       location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+      }
       $(document).ready(function() {
         $(".ui.toggle.button").click(function() {
           $(".mobile.only.grid .ui.vertical.menu").toggle(100);
